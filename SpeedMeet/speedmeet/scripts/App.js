@@ -2,8 +2,11 @@
 
 require.config({
     baseUrl: '../Scripts',
+    shim: {
+        "bootstrap": { "deps": ['jquery'] }
+    },
     paths: {
-        "jquery": "libs/jquery-1.9.1",
+        "jquery": "libs/jquery-1.11.3.min",
         "bootstrap": "libs/bootstrap.min",
         "datatables": "libs/jquery.dataTables",
         "async": "libs/async",
@@ -15,7 +18,7 @@ require.config({
 });
 
 
-require(['jquery', 'starters/application', 'views/main', 'jquery.validate'],
+require(['jquery', 'starters/application', 'views/main', 'jquery.validate', 'bootstrap'],
 function ($, Application, viewMain, validate) {
     var waitDialog = SP.UI.ModalDialog.showWaitScreenWithNoClose('Loading SpeedMeet...', 'Please wait, this will not take longer...');
     $(document).ready(function () {
@@ -30,18 +33,7 @@ function ($, Application, viewMain, validate) {
                             var oviewMain = new viewMain(oApplication);
                             waitDialog.close();
                             waitDialog = null;
-
-                            $.ajax({
-                                url: "https://outlook.office365.com//api/v1.0/me/calendarview?startDateTime=2014-10-01T01:00:00Z&endDateTime=2015-10-31T23:00:00Z&$select=Subject",
-                                type: "GET",
-                                async: false,                                
-                                success: function (data) {
-                                    return data;
-                                },
-                                error: function (data, errorCode, errorMessage) {
-                                    console.log(err.message)
-                                }
-                            });
+                           
 
                         });
                     });

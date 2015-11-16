@@ -14,5 +14,6 @@
     <File Path="Images\checked.gif" Url="Images/checked.gif" ReplaceContent="TRUE" />
     <File Path="Images\error.png" Url="Images/error.png" ReplaceContent="TRUE" />
     <File Path="Images\valid.png" Url="Images/valid.png" ReplaceContent="TRUE" />
+    <File Path="Images\logo-contentteam.png" Url="Images/logo-contentteam.png" ReplaceContent="TRUE" />
   </Module>
 </Elements>

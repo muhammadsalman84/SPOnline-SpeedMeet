@@ -24,7 +24,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control" id="txt-location-meetevent" data-spfield="Location1" required>
                         <span class="input-group-btn">
-                            <button type="button" id="btnSearchLocation" class="btn btn-success">
+                            <button type="button" id="btnSearchLocation" class="btn btn-success" data-toggle="tooltip" title="Search the address in Google Map">
                                 <i class="glyphicon glyphicon-search pull-left"></i><span>Search</span>
                             </button>
                         </span>
@@ -49,7 +49,7 @@
                 <div class="col-md-9">
                 </div>
                 <div class="col-md-2 form-group">
-                    <button type="button" id="btnNextToCalendar" class="btn btn-primary" data-bsbutton="true">Next</button>
+                    <button type="button" id="btnNextToCalendar" class="btn btn-primary" data-bsbutton="true" data-toggle="tooltip" title="Go to the next section">Next</button>
                 </div>
                 <div class="col-md-1">
                 </div>
@@ -87,15 +87,15 @@
         <div class="col-md-12"></div>
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <div class="btn-group btn-group-justified">
-                <a id="btnBackToMap" class="btn btn-warning" data-bsbutton="true">
+            <div >
+                <a id="btnBackToMap" class="btn btn-warning" data-bsbutton="true" data-toggle="tooltip" title="Go back" style="width:100px">
                     Back
                 </a>
-                <a id="btnCreateEvent" class="btn btn-primary" data-bsbutton="true">
+                <a href="#" id="btnCreateEvent" class="btn btn-primary" data-bsbutton="true" data-toggle="tooltip" title="Creates a SpeedMeet and send email invitation to the participants.">
                     <i class="glyphicon glyphicon-list-alt pull-left"></i>
                     Create SpeedMeet event
                 </a>
-                <a id="btnUpdateEvent" class="btn btn-primary hide" data-bsbutton="true">
+                <a href="#" id="btnUpdateEvent" class="btn btn-primary hide" data-bsbutton="true" data-toggle="tooltip" title="Updates the SpeedMeet and notify participants by sending them email.">
                     <i class="glyphicon glyphicon-list-alt pull-left"></i>
                     Update SpeedMeet event
                 </a>

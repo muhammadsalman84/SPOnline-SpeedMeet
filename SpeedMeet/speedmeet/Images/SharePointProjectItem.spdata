@@ -15,5 +15,6 @@
     <ProjectItemFile Source="checked.gif" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="error.png" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="valid.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="logo-contentteam.png" Target="Images\" Type="ElementFile" />
   </Files>
 </ProjectItem>

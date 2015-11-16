@@ -44,7 +44,12 @@ define([], function () {
         self.getSPAppBaseUrl = function () {
             if (!sSPAppBaseUrl)
                 sSPAppBaseUrl = document.URL;
-
+            //  Remove the hash at the end of the url
+            var hashIndex = sSPAppBaseUrl.indexOf("#");
+            if (hashIndex > -1) {
+                if (hashIndex == sSPAppBaseUrl.length - 1)
+                    sSPAppBaseUrl = sSPAppBaseUrl.substring(0, sSPAppBaseUrl.length - 1);
+            }
             return sSPAppBaseUrl;
         }
 
@@ -60,16 +65,16 @@ define([], function () {
                 errorHtml = "<span class='help-block' id='{0}'>This field is required.</span>";
 
             $(moduleId).find("*").each(function (index) {
-                element = $(this).attr("required");               
+                element = $(this).attr("required");
                 if (element) {
                     elementId = $(this).attr('id') + "-error";
                     $("#" + elementId).remove();
                     errorHtml = String.format(errorHtml, elementId);
                     if ($(this).val()) {
-                        $(this).closest('.form-group').removeClass('has-error').addClass('has-success');                                                
+                        $(this).closest('.form-group').removeClass('has-error').addClass('has-success');
                     }
-                    else {                        
-                        $(this).closest('.form-group').removeClass('has-success').addClass('has-error');                        
+                    else {
+                        $(this).closest('.form-group').removeClass('has-success').addClass('has-error');
                         if ($(this).parent('.input-group').length) {
                             $(errorHtml).insertAfter($(this).parent());
                         } else {

@@ -37,7 +37,7 @@ define(["data/data-meetevent-list", "controllers/utility-controller", "plugin-mo
                  $("#txt-title-pool").text("SpeedMeet Event: " + oListItem.Title);
                  $("#txt-description-pool").text(oListItem.Description1);
                  $("#txt-location-pool").text(oListItem.Location1);
-                
+
                  var geoLocation = JSON.parse(oListItem.GeoLocation);
                  oGoogleApi = new GoogleApi("map-canvas-showevent", geoLocation, true);
                  oGoogleApi.initialzeMap();
@@ -46,18 +46,9 @@ define(["data/data-meetevent-list", "controllers/utility-controller", "plugin-mo
              }
 
 
-             this.loadMeetEvent = function (itemId, usersObject) {
+             this.loadMeetEvent = function (itemId, usersObject, IsVisiting) {
                  var oUtilityController = new UtilityController(oApplication),
                  oDeferred = $.Deferred();
-                 /*if (typeof (oListItem) == "object") {     // If it is an object then Listitem object is passed.
-
-                     headerHtml = oUtilityController.getHeadersInfo(oListItem);       // Create Headers for the DataTable                                                                          
-                     oPoolDataTable.clearDataTable();
-                     oPoolDataTable.bindDataTable(headerHtml, usersObject, oListItem);
-
-                     bindView(oListItem);
-                 }
-                 else {*/
 
                  oDAMeetEventList.getListItemByItemId(itemId, true).
                      done(function (oListItem) {
@@ -69,8 +60,16 @@ define(["data/data-meetevent-list", "controllers/utility-controller", "plugin-mo
                              oPoolDataTable.bindDataTable(headerHtml, usersObject, oListItem);
                              bindView(oListItem);
                              oDeferred.resolve();
-                         });
 
+                             if (IsVisiting) {
+                                 // Update the participant info (User visited this item).
+                                 oUtilityController.updateParticipantInfo(1, oListItem)
+                                 .done(function () {
+                                     oApplication.oAnnouncementView.getMyAnnouncments();
+                                 });
+
+                             }
+                         });
                      });
                  return oDeferred.promise();
              }

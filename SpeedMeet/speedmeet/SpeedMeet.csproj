@@ -91,6 +91,7 @@
     <Content Include="Images\error.png" />
     <Content Include="Images\glyphicons-halflings-white.png" />
     <Content Include="Images\glyphicons-halflings.png" />
+    <Content Include="Images\logo-contentteam.png" />
     <Content Include="Images\Person.png" />
     <Content Include="Images\speedmeet_logo-text.png" />
     <Content Include="Images\speedmeet_logo.png" />
@@ -113,6 +114,7 @@
       <SharePointProjectItemId>{37ca5463-cf4c-411e-9718-b4190eb70c0e}</SharePointProjectItemId>
     </None>
     <Content Include="Pages\SpeedMeetNew.aspx" />
+    <Content Include="Scripts\controllers\announcement-controller.js" />
     <Content Include="Scripts\controllers\join-meetevent-controller.js" />
     <Content Include="Scripts\controllers\my-meetevent-controller.js" />
     <Content Include="Scripts\controllers\final-meetevent-controller.js" />
@@ -124,6 +126,7 @@
     <Content Include="Scripts\App.js" />
     <Content Include="Scripts\libs\async.js" />
     <Content Include="Scripts\libs\fullcalendar.min.js" />
+    <Content Include="Scripts\libs\jquery-1.11.3.min.js" />
     <Content Include="Scripts\libs\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\libs\jquery-1.9.1.js" />
     <Content Include="Scripts\libs\jquery-1.9.1.min.js" />
@@ -145,6 +148,7 @@
     <Content Include="Scripts\starters\constants.js" />
     <Content Include="Scripts\starters\utility.js" />
     <Content Include="Scripts\starters\application.js" />
+    <Content Include="Scripts\views\announcements-view.js" />
     <Content Include="Scripts\views\validate-controls.js" />
     <Content Include="Scripts\views\main.js" />
     <Content Include="Scripts\views\join-meetevent-view.js" />

@@ -23,7 +23,7 @@ define(["controllers/my-meetevent-controller", "controllers/utility-controller",
                          oApplication.oFinalSpeedMeetView.bindFinalView(itemId);
                          break;
                      default:
-                         oApplication.oShowMeetEventView.loadMeetEvent(itemId, _spPageContextInfo.userId);
+                         oApplication.oShowMeetEventView.loadMeetEvent(itemId, _spPageContextInfo.userId, true);
                  }
 
              }

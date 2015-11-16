@@ -6,7 +6,9 @@ define(["controllers/join-meetevent-controller", "plugin-modules/base-datatable"
                  dtTable, arrayColumns;
 
              function showMeetEvent(itemId) {
-                 oApplication.oShowMeetEventView.loadMeetEvent(itemId, _spPageContextInfo.userId);
+
+                 oApplication.oMeetEventView.showEvent(itemId);
+                 //oApplication.oShowMeetEventView.loadMeetEvent(itemId, _spPageContextInfo.userId, true);
              }
 
              this.getMeetInvitations = function () {
@@ -26,13 +28,13 @@ define(["controllers/join-meetevent-controller", "plugin-modules/base-datatable"
                                "targets": [2], "visible": false, "searchable": false
                            },
                           {
-                              "render": function (data, type, full, meta) {                                                                    
+                              "render": function (data, type, full, meta) {
                                   eventHtml = '<a href="#" id="event' + full[0] + '" data-eventId="' + full[0] + '">' + data + '</a>';
                                   return eventHtml;
                               },
                               "targets": 1
                           }];
-                     
+
                      columnsOrder = [[2, "desc"]];      // Order by created date (descending)
                      oBaseDataTable.clearDataTable();
                      oBaseDataTable.bindDataTable(columnsDef, columnsOrder);
@@ -46,7 +48,7 @@ define(["controllers/join-meetevent-controller", "plugin-modules/base-datatable"
                              showMeetEvent(eventId);
                          });
                      });
-                  
+
                  });
              }
          }
