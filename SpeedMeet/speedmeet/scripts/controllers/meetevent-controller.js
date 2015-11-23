@@ -243,23 +243,25 @@ define(["data/da-utility", "data/da-layer", "controllers/utility-controller", "d
                 oEmail.Subject = String.format(sEmailConstants.SUBJECT, oListitem.Title);
 
                 for (userId in olUsers) {
-                    if (olUsers[userId].Email) {
-                        url = oApplication.updateQueryStringParameter(sBaseUrl, "smUserId", userId);
-                        oEmail.To = olUsers[userId].Email;
+                    if (_spPageContextInfo.userId != userId) {
+                        if (olUsers[userId].Email) {
+                            url = oApplication.updateQueryStringParameter(sBaseUrl, "smUserId", userId);
+                            oEmail.To = olUsers[userId].Email;
 
-                        if (newUsers != null) {     // Send invitation to the users invited later in the event.
-                            foundUser = $.inArray(userId, newUsers);        // Does new Users collection has the user id.
-                            if ((emailType == "NEWLOCATION") && (foundUser == -1)) {        // Send location changed notification to old users.
-                                oEmail.Body = String.format(sEmailConstants.BODY_TEXT(), olUsers[userId].DisplayName, oListitem.Title, location.locationName, url);
+                            if (newUsers != null) {     // Send invitation to the users invited later in the event.
+                                foundUser = $.inArray(userId, newUsers);        // Does new Users collection has the user id.
+                                if ((emailType == "NEWLOCATION") && (foundUser == -1)) {        // Send location changed notification to old users.
+                                    oEmail.Body = String.format(sEmailConstants.BODY_TEXT(), olUsers[userId].DisplayName, oListitem.Title, location.locationName, url);
 
+                                    arrayEmails.push(oEmail);
+                                }
+                                else if (foundUser != -1)
+                                    arrayEmails.push(oEmail);
+                            }
+                            else {      // Send invitation to the new users.
+                                oEmail.Body = String.format(sEmailConstants.BODY_TEXT(), olUsers[userId].DisplayName, oListitem.Title, description, location.locationName, url);
                                 arrayEmails.push(oEmail);
                             }
-                            else if (foundUser != -1)
-                                arrayEmails.push(oEmail);
-                        }
-                        else {      // Send invitation to the new users.
-                            oEmail.Body = String.format(sEmailConstants.BODY_TEXT(), olUsers[userId].DisplayName, oListitem.Title, description, location.locationName, url);
-                            arrayEmails.push(oEmail);
                         }
                     }
                 }

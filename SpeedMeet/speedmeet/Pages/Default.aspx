@@ -30,7 +30,7 @@
     <!--<script src="../Scripts/libs/bootstrap.min.js"></script>-->
     <script data-main="../Scripts/App" src="../Scripts/require.js"></script>
     <!--<script src="../Scripts/libs/validator.js"></script>-->
-
+    <script src="../Scripts/BloggerCode.js"></script>
 </asp:Content>
 
 <%-- The markup in the following Content element will be placed in the TitleArea of the page --%>
@@ -50,7 +50,7 @@
             <div class="col-md-2">
                 <img id="img-company-logo" src="../Images/logo-contentteam.png" alt="TUV logo" />
             </div>
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <img id="img-app-logo" class="img-responsive" src="../Images/speedmeet_logo-text.png" alt="SharePoint Speed Meet App logo" />
             </div>
             <div class="col-md-2">
@@ -66,6 +66,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-2">
+                <div id="user-info"></div>
             </div>
         </div>
         <div class="row">

@@ -3,7 +3,6 @@
   <Module Name="Images">
     <File Path="Images\AppIcon.png" Url="Images/AppIcon.png" ReplaceContent="TRUE" />
     <File Path="Images\speedmeet_logo.png" Url="Images/speedmeet_logo.png" ReplaceContent="TRUE" />
-    <File Path="Images\tuv_logo.jpg" Url="Images/tuv_logo.jpg" ReplaceContent="TRUE" />
     <File Path="Images\speedmeet_logo-text.png" Url="Images/speedmeet_logo-text.png" ReplaceContent="TRUE" />
     <File Path="Images\glyphicons-halflings.png" Url="Images/glyphicons-halflings.png" ReplaceContent="TRUE" />
     <File Path="Images\glyphicons-halflings-white.png" Url="Images/glyphicons-halflings-white.png" ReplaceContent="TRUE" />
@@ -15,5 +14,6 @@
     <File Path="Images\error.png" Url="Images/error.png" ReplaceContent="TRUE" />
     <File Path="Images\valid.png" Url="Images/valid.png" ReplaceContent="TRUE" />
     <File Path="Images\logo-contentteam.png" Url="Images/logo-contentteam.png" ReplaceContent="TRUE" />
+    <File Path="Images\speedmeet_logo_ Icon.png" Url="Images/speedmeet_logo_ Icon.png" ReplaceContent="TRUE" />
   </Module>
 </Elements>

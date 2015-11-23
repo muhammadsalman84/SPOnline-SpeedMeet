@@ -34,7 +34,7 @@ function ($, Application, viewMain, validate) {
                             waitDialog.close();
                             waitDialog = null;
                            
-
+                            getUserPicture();
                         });
                     });
                 });

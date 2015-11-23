@@ -29,8 +29,15 @@ define([], function () {
         }
 
         self.getSPAppWebUrl = function () {
-            if (!sSPAppWebUrl)
+            if (!sSPAppWebUrl) {
                 sSPAppWebUrl = decodeURIComponent(this.getQueryStringParameters("SPAppWebUrl"));
+                //  Remove the hash at the end of the url
+                var hashIndex = sSPAppWebUrl.indexOf("#");
+                if (hashIndex > -1) {
+                    if (hashIndex == sSPAppWebUrl.length - 1)
+                        sSPAppWebUrl = sSPAppWebUrl.substring(0, sSPAppWebUrl.length - 1);
+                }
+            }
             return sSPAppWebUrl;
         }
 

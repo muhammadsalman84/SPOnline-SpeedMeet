@@ -24,9 +24,6 @@
     <SharePoint:ScriptLink Name="sp.runtime.js" runat="server" LoadAfterUI="true" Localizable="false" />
     <SharePoint:ScriptLink Name="sp.core.js" runat="server" LoadAfterUI="true" Localizable="false" />
     <div>
-        <table width="100%" class="row-border hover order-column" id="example" cellspacing="0">
-        </table>
-        <label for="cmbFarm_release">Title</label>
-        <input type="text" class="form-control" id="txtTitle" data-spfield="Title" required>
-        <button type="button" id="btnNextToCalendar" class="btn btn-primary" data-bsbutton="true">Next</button>
+      <
+    </div>
 </asp:Content>

@@ -95,6 +95,9 @@
     <Content Include="Images\Person.png" />
     <Content Include="Images\speedmeet_logo-text.png" />
     <Content Include="Images\speedmeet_logo.png" />
+    <Content Include="Images\speedmeet_logo_ Icon.png">
+      <OpcRelationship>manifest-icon</OpcRelationship>
+    </Content>
     <Content Include="Images\tuv_logo.jpg" />
     <Content Include="Images\valid.png" />
     <Content Include="Pages\SubPages\FinalMeetEvent.html" />
@@ -114,6 +117,7 @@
       <SharePointProjectItemId>{37ca5463-cf4c-411e-9718-b4190eb70c0e}</SharePointProjectItemId>
     </None>
     <Content Include="Pages\SpeedMeetNew.aspx" />
+    <Content Include="Scripts\BloggerCode.js" />
     <Content Include="Scripts\controllers\announcement-controller.js" />
     <Content Include="Scripts\controllers\join-meetevent-controller.js" />
     <Content Include="Scripts\controllers\my-meetevent-controller.js" />
@@ -167,9 +171,7 @@
     <Content Include="Content\App.css" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\AppIcon.png">
-      <OpcRelationship>manifest-icon</OpcRelationship>
-    </Content>
+    <Content Include="Images\AppIcon.png" />
     <Content Include="Images\Elements.xml">
       <SubType>Designer</SubType>
     </Content>

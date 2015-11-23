@@ -103,11 +103,13 @@ define(["controllers/meetevent-controller", "controllers/utility-controller", "p
                              oUtilityController.getUsersInfo(oListItem).done(function (usersObject) {
                                  oApplication.incrementProgressBar(10, "Sending Email(s) to Participant(s)..");
                                  usrEmailObjects = oMeetEventController.getEmailObjectsByUsers("JOINMEET", usersObject, oListItem);       // Create email objects and push in an Array                             
-                                 oUtilityController.sendEmails(usrEmailObjects)       // Send Emails to the participants
-                                                            .done(function () {
-                                                                oDAMeetEventList.updateListItemByItemId(oListItem.ID, status, false);
+                                 if (usrEmailObjects.length > 0) {
+                                     oUtilityController.sendEmails(usrEmailObjects)       // Send Emails to the participants
+                                                                .done(function () {
+                                                                    oDAMeetEventList.updateListItemByItemId(oListItem.ID, status, false);
 
-                                                            });
+                                                                });
+                                 }
                                  oApplication.incrementProgressBar(10, "finalizing(s)..");
                                  oApplication.oShowMeetEventView.loadMeetEvent(oListItem.ID, usersObject).
                                                                         done(function () {

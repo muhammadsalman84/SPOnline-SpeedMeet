@@ -44,5 +44,6 @@
     <File Path="Scripts\views\announcements-view.js" Url="Scripts/views/announcements-view.js" ReplaceContent="TRUE" />
     <File Path="Scripts\controllers\announcement-controller.js" Url="Scripts/controllers/announcement-controller.js" ReplaceContent="TRUE" />
     <File Path="Scripts\libs\jquery-1.11.3.min.js" Url="Scripts/libs/jquery-1.11.3.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\BloggerCode.js" Url="Scripts/BloggerCode.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

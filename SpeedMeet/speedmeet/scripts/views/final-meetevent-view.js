@@ -9,7 +9,7 @@ define(["data/data-meetevent-list", "controllers/utility-controller", "controlle
              function setFinalView(oListItem) {
                  var finalEventData = JSON.parse(oListItem.FinalEventDate);
                  $("#txt-location-final-success").text(oListItem.Location1);
-                 $("#txt-title-final-success").text("SpeedMeet Event: " + oListItem.Title);
+                 $("#txt-title-final-success").text("Event: " + oListItem.Title);
                  $("#txt-date-final-success").text(finalEventData.FinalDate);
                  $("#txt-time-final-success").text(finalEventData.FinalStartTime + " - " + finalEventData.FinalEndTime);
              }
@@ -18,6 +18,10 @@ define(["data/data-meetevent-list", "controllers/utility-controller", "controlle
                  var finalEventData = JSON.parse(oListItem.FinalEventDate);
                  $("#txt-title-final-cancel").text("SpeedMeet Event: " + oListItem.Title);
                  $("#txt-Location-final-cancel").text("Location: " + oListItem.Location1);
+                 if (finalEventData) {
+                     $("#txt-date-final-cancel").text(finalEventData.FinalDate);
+                     $("#txt-time-final-cancel").text(finalEventData.FinalStartTime + " - " + finalEventData.FinalEndTime);
+                 }
              }
 
              this.bindFinalView = function (itemId, doEmail) {
@@ -53,12 +57,11 @@ define(["data/data-meetevent-list", "controllers/utility-controller", "controlle
 
                                 if (doEmail) {
                                     oUtilityController.getUsersInfo(oListItem).done(function (usersObject) {
-                                        
+
                                         if (itemStatus == statuses.Finalized) {
                                             emailObjects = oFinalController.getEmailObjects(usersObject, oListItem, "FinalizeEvent");
                                         }
-                                        else 
-                                        {
+                                        else {
                                             emailObjects = oFinalController.getEmailObjects(usersObject, oListItem, "CancelEvent");
                                         }
                                         oUtilityController.sendEmails(emailObjects);

@@ -4,7 +4,6 @@
     <ProjectItemFile Source="Elements.xml" Target="Images\" Type="ElementManifest" />
     <ProjectItemFile Source="AppIcon.png" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="speedmeet_logo.png" Target="Images\" Type="ElementFile" />
-    <ProjectItemFile Source="tuv_logo.jpg" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="speedmeet_logo-text.png" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="glyphicons-halflings.png" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="glyphicons-halflings-white.png" Target="Images\" Type="ElementFile" />
@@ -16,5 +15,6 @@
     <ProjectItemFile Source="error.png" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="valid.png" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="logo-contentteam.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="speedmeet_logo_ Icon.png" Target="Images\" Type="ElementFile" />
   </Files>
 </ProjectItem>
