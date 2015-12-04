@@ -70,9 +70,9 @@ define(['async!https://maps.googleapis.com/maps/api/js?v=3.exp'], function () {
                 self.geoLocation.locationName = clientLocation.address.city + ", " + clientLocation.address.region + ", " + clientLocation.address.country;
             }
             else {*/
-            self.geoLocation.latitude = 50.923975;
-            self.geoLocation.longitude = 6.992610;
-            self.geoLocation.locationName = "TÜV Rheinland, Köln, North Rhine-Westphalia";
+            self.geoLocation.latitude = 50.948800;
+            self.geoLocation.longitude = 6.944380;
+            self.geoLocation.locationName = "Im Mediapark 6 50670 Cologne";
             //}
         }
 

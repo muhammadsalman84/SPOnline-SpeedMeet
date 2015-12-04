@@ -11,6 +11,12 @@ define(["views/meetevent-view", "views/my-meetevent-view", "views/join-meetevent
              itemId = oApplication.getQueryStringParameters("smItemId");
              userId = oApplication.getQueryStringParameters("smUserId");
 
+
+             var showNewSpeedMeet = function () {
+                 oApplication.showHideModule(oApplication.modules.meetEventModule.id, 0);
+                 oApplication.oMeetEventView = new MeetEventView(oApplication);
+             }
+
              var setStartUpValues = function () {
                  var oUtilityController = new utilityController(oApplication),
                      oDeferred = $.Deferred();
@@ -19,6 +25,24 @@ define(["views/meetevent-view", "views/my-meetevent-view", "views/join-meetevent
                      oApplication.CurrentUserId = userId;
                      oDeferred.resolve();
                  });
+
+                 return oDeferred.promise();
+             }
+
+             var doesUserExistInListItem = function (itemId, userId) {
+                 var oUtilityController = new utilityController(oApplication),
+                    oDeferred = $.Deferred();
+
+                 oUtilityController.getListItemByItemId(itemId, userId)
+                     .done(function (oListItem) {
+                         if (oListItem.Participants1Id) {
+                             $.each(oListItem.Participants1Id.results, function (index, participantId) {
+                                 if (userId == participantId)
+                                     oDeferred.resolve(true)
+                             });
+                         }
+                         oDeferred.resolve(false);
+                     });
 
                  return oDeferred.promise();
              }
@@ -33,12 +57,21 @@ define(["views/meetevent-view", "views/my-meetevent-view", "views/join-meetevent
                  oApplication.oAnnouncementView = new AnnouncementsView(oApplication);
 
                  if ((itemId) && (userId == oApplication.CurrentUserId)) {
-                     oApplication.oMeetEventView = new MeetEventView(oApplication);
-                     oApplication.oMeetEventView.showEvent(itemId);
+                     doesUserExistInListItem(itemId, userId)
+                         .done(function (doesUserExist) {
+                             if (doesUserExist) {
+                                 oApplication.oMeetEventView = new MeetEventView(oApplication);
+                                 oApplication.oMeetEventView.showEvent(itemId);
+                             }
+                             else {
+                                 showNewSpeedMeet();
+                             }
+                         });
                  }
                  else {
-                     oApplication.showHideModule(oApplication.modules.meetEventModule.id, 0);
-                     oApplication.oMeetEventView = new MeetEventView(oApplication);
+
+                     showNewSpeedMeet();
+
                  }
 
                  $('[data-toggle="tooltip"]').tooltip();    // Initialize the Tooltip

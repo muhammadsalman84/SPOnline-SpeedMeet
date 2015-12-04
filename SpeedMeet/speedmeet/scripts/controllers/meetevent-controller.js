@@ -42,6 +42,9 @@ define(["data/da-utility", "data/da-layer", "controllers/utility-controller", "d
                         if (userKeys.length - defCounter == 0) {
                             deferred.resolve(arrayParticipants);
                         }
+                    })
+                    .fail(function (sender, args) {
+                        deferred.reject("couldnot resolve the participants from people picker");
                     });
                 });
                 // });
@@ -146,38 +149,39 @@ define(["data/da-utility", "data/da-layer", "controllers/utility-controller", "d
                 oDAMeetEventList.getListItemByItemId(itemId)                        // Get the latest values of the list item from Sharepoint list.
                                         .done(function (oListItem) {
 
-                                            getParticipantsKeys(oApplication.getParticipants()).done(function (arrayUserKeys) {
+                                            getParticipantsKeys(oApplication.getParticipants())
+                                                .done(function (arrayUserKeys) {
 
-                                                //_spPageContextInfo.userId
-                                                foundAuthorId = $.inArray(oApplication.CurrentUserId, arrayUserKeys);
-                                                if (foundAuthorId == -1)
-                                                    arrayUserKeys.push(oApplication.CurrentUserId);                      // Add the current user in the collection.  
+                                                    //_spPageContextInfo.userId
+                                                    foundAuthorId = $.inArray(oApplication.CurrentUserId, arrayUserKeys);
+                                                    if (foundAuthorId == -1)
+                                                        arrayUserKeys.push(oApplication.CurrentUserId);                      // Add the current user in the collection.  
 
 
-                                                listObject.Participants1 = arrayUserKeys;                               // Set the Particpant array to the list object
-                                                newFeedBack = createFeedBackData(listObject);
-                                                listObject["Feedback"] = fixFeedBackData(oListItem.Feedback, newFeedBack);      // Set the old calendar dates values
+                                                    listObject.Participants1 = arrayUserKeys;                               // Set the Particpant array to the list object
+                                                    newFeedBack = createFeedBackData(listObject);
+                                                    listObject["Feedback"] = fixFeedBackData(oListItem.Feedback, newFeedBack);      // Set the old calendar dates values
 
-                                                // Push the changes in the array.
-                                                newUsers = getNewUsers(oListItem.Participants1Id.results, arrayUserKeys);
-                                                isNewLocation = doesLocationChanged(oListItem.GeoLocation, listObject["GeoLocation"]);
-                                                changesRecorder.push(newUsers);
-                                                changesRecorder.push(isNewLocation);
-                                                delete listObject.Participants1;
+                                                    // Push the changes in the array.
+                                                    newUsers = getNewUsers(oListItem.Participants1Id.results, arrayUserKeys);
+                                                    isNewLocation = doesLocationChanged(oListItem.GeoLocation, listObject["GeoLocation"]);
+                                                    changesRecorder.push(newUsers);
+                                                    changesRecorder.push(isNewLocation);
+                                                    delete listObject.Participants1;
 
-                                                // Set the new values in the EventMeet Object
-                                                listObject["Participants1Id"] = { 'results': arrayUserKeys };
-                                                listObject["Feedback"] = JSON.stringify(listObject["Feedback"]);
-                                                listObject["MeetingDates"] = JSON.stringify(listObject["MeetingDates"]);
-                                                listObject["GeoLocation"] = JSON.stringify(listObject["GeoLocation"]);
-                                                listObject["ParticipantsInfo"] = JSON.stringify(getParticipantsInfo(arrayUserKeys));
+                                                    // Set the new values in the EventMeet Object
+                                                    listObject["Participants1Id"] = { 'results': arrayUserKeys };
+                                                    listObject["Feedback"] = JSON.stringify(listObject["Feedback"]);
+                                                    listObject["MeetingDates"] = JSON.stringify(listObject["MeetingDates"]);
+                                                    listObject["GeoLocation"] = JSON.stringify(listObject["GeoLocation"]);
+                                                    listObject["ParticipantsInfo"] = JSON.stringify(getParticipantsInfo(arrayUserKeys));
 
-                                                oDAMeetEventList.
-                                                    updateListItemByItemId(itemId, listObject, false)
-                                                        .done(function () {
-                                                            oDeferred.resolve(changesRecorder);
-                                                        });
-                                            });
+                                                    oDAMeetEventList.
+                                                        updateListItemByItemId(itemId, listObject, false)
+                                                            .done(function () {
+                                                                oDeferred.resolve(changesRecorder);
+                                                            });
+                                                });
                                         });
 
                 return oDeferred.promise();
@@ -218,6 +222,10 @@ define(["data/da-utility", "data/da-layer", "controllers/utility-controller", "d
                         oApplication.incrementProgressBar(20, "SpeedMeet list item created..");
                         oDeferred.resolve(listItem);
                     });
+                })
+                .fail(function (message) {
+                    //oApplication.incrementProgressBar(10, message);
+                    oDeferred.reject(message);
                 });
                 return oDeferred.promise();
             }
@@ -225,7 +233,6 @@ define(["data/da-utility", "data/da-layer", "controllers/utility-controller", "d
             this.getEmailObjectsByUsers = function (emailType, olUsers, oListitem, newUsers) {
                 var sEmailConstants,
                 sBaseUrl = oApplication.updateQueryStringParameter(oApplication.getSPAppBaseUrl(), "smItemId", oListitem.Id),
-                oEmail = {},
                 arrayEmails = [],
                 userId, url, sBody, foundUser,
                 description = oListitem.Description1 || "",
@@ -239,10 +246,14 @@ define(["data/da-utility", "data/da-layer", "controllers/utility-controller", "d
                         sEmailConstants = CONSTANTS.EMAIL.NewMeet;
                         break;
                 }
-                oEmail.From = sEmailConstants.FROM;
-                oEmail.Subject = String.format(sEmailConstants.SUBJECT, oListitem.Title);
+
 
                 for (userId in olUsers) {
+
+                    var oEmail = {};
+                    oEmail.From = sEmailConstants.FROM;
+                    oEmail.Subject = String.format(sEmailConstants.SUBJECT, oListitem.Title);
+
                     if (_spPageContextInfo.userId != userId) {
                         if (olUsers[userId].Email) {
                             url = oApplication.updateQueryStringParameter(sBaseUrl, "smUserId", userId);

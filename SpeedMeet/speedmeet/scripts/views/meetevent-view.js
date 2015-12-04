@@ -117,7 +117,16 @@ define(["controllers/meetevent-controller", "controllers/utility-controller", "p
                                                                         });
 
                              });
-                         });
+                         })
+                     .fail(function (errorMessage) {
+
+                         var showModule = function () {
+                             oApplication.showHideModule(oMeetEventModule.id, 0);
+                         };
+
+                         oApplication.stopProgressBarOnError(70, errorMessage, showModule);
+                         
+                     });
                  }
              });
 

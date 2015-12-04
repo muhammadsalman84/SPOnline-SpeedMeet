@@ -50,7 +50,7 @@
             <div class="col-md-2">
                 <img id="img-company-logo" src="../Images/logo-contentteam.png" alt="TUV logo" />
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <img id="img-app-logo" class="img-responsive" src="../Images/speedmeet_logo-text.png" alt="SharePoint Speed Meet App logo" />
             </div>
             <div class="col-md-2">
@@ -67,9 +67,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
+            <!--<div class="col-md-2">
                 <div id="user-info"></div>
-            </div>
+            </div>-->
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -81,8 +81,8 @@
                 <div id="IMenubar">
                     <ul class="nav nav-pills nav-stacked span3">
                         <li class="active"><a id="btnNewMeetEvent" href="javascript:;" data-bsbutton="true">New SpeedMeet</a></li>
-                        <li><a id="btnMyMeetEvents" href="javascript:;" data-bsbutton="true">My SpeedMeets</a></li>
-                        <li><a id="btnJoinMeetEvent" href="javascript:;" data-bsbutton="true">SpeedMeet Requests</a></li>
+                        <li><a id="btnMyMeetEvents" href="javascript:;" data-bsbutton="true">My SpeedMeet(s)</a></li>
+                        <li><a id="btnJoinMeetEvent" href="javascript:;" data-bsbutton="true">SpeedMeet Invitation(s)</a></li>
                     </ul>
                 </div>
             </div>

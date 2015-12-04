@@ -25,7 +25,10 @@ define(function () {
                     data;
                 }
                 httpRequest.error = function (data) {
-                    failure(data);
+                    if (data.statusText)
+                        console.log(data.statusText);
+                    if (data.responseText)
+                        console.log(data.responseText);
                 }
 
                 try {

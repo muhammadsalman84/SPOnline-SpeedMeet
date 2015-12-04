@@ -266,6 +266,19 @@ define(["data/da-utility", "data/da-layer", "data/data-meetevent-list"],
                 return oDeferred.promise();
             }
 
+            this.getListItemByItemId = function (itemId, userId, getDetails) {
+                var oDeferred = $.Deferred(),
+                    oDAMeetList = new DAMeetList(oApplication);
+
+                var getListItem = oDAMeetList.getListItemByItemId(itemId, userId, getDetails);
+
+                getListItem.done(function (oListItem) {
+                    oDeferred.resolve(oListItem);
+                });
+
+                return oDeferred.promise();
+            }
+
             this.updateParticipantInfo = function (announcementValue, oListItem) {
                 var oDeferred = $.Deferred(),
                     oDAMeetList = new DAMeetList(oApplication),

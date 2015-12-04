@@ -11,7 +11,6 @@ define(["data/da-layer"], function (DALayer) {
             CONSTANTS = this.oApplication.getConstants(),
             baseUrl = this.oApplication.updateQueryStringParameter(this.oApplication.getSPAppBaseUrl(), "smItemId", oListitem.Id),
             emailConstants,
-            oEmail = {},
             arrayEmails = [],
             userId, url, finalDateObject, date,
             description = oListitem.Description1 || "",
@@ -20,13 +19,17 @@ define(["data/da-layer"], function (DALayer) {
         switch (templateType) {
             case "CancelEvent":
                 emailTemplate = CONSTANTS.EMAIL.CancelEvent;
-                oEmail.From = emailTemplate.FROM;
-                oEmail.Subject = emailTemplate.SUBJECT;
+
 
                 for (userId in UserObjects) {
+
+                    var oEmail = {};
+                    oEmail.From = emailTemplate.FROM;
+                    oEmail.Subject = emailTemplate.SUBJECT;
+
                     if (UserObjects[userId].Email) {
                         url = this.oApplication.updateQueryStringParameter(baseUrl, "smUserId", userId);
-                        finalDateObject = JSON.parse(oListitem.FinalEventDate);                        
+                        finalDateObject = JSON.parse(oListitem.FinalEventDate);
                         oEmail.To = UserObjects[userId].Email;
                         oEmail.Body = String.format(emailTemplate.BODY_TEXT(), UserObjects[userId].DisplayName, oListitem.Title, description, location.locationName, url);
                         arrayEmails.push(oEmail);
@@ -35,10 +38,13 @@ define(["data/da-layer"], function (DALayer) {
                 break;
             case "FinalizeEvent":
                 emailTemplate = CONSTANTS.EMAIL.FinalizeEvent;
-                oEmail.From = emailTemplate.FROM;
-                oEmail.Subject = emailTemplate.SUBJECT;
 
                 for (userId in UserObjects) {
+
+                    var oEmail = {};
+                    oEmail.From = emailTemplate.FROM;
+                    oEmail.Subject = emailTemplate.SUBJECT;
+
                     if (UserObjects[userId].Email) {
                         url = this.oApplication.updateQueryStringParameter(baseUrl, "smUserId", userId);
                         finalDateObject = JSON.parse(oListitem.FinalEventDate);
@@ -48,10 +54,10 @@ define(["data/da-layer"], function (DALayer) {
                         arrayEmails.push(oEmail);
                     }
                 }
-                break;            
+                break;
         }
-           
-        
+
+
 
         return arrayEmails;
     }
