@@ -16,5 +16,6 @@
     <ProjectItemFile Source="valid.png" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="logo-contentteam.png" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="speedmeet_logo_ Icon.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="Progress.gif" Target="Images\" Type="ElementFile" />
   </Files>
 </ProjectItem>

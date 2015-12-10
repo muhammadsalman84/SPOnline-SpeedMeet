@@ -2,6 +2,7 @@
 define(["controllers/my-meetevent-controller", "controllers/utility-controller", "data/data-meetevent-list", "plugin-modules/base-datatable"],
      function (MyMeetEventController, UtilityController, DAMeetEventList, BaseDataTable) {
          function MyMeetEventView(oApplication) {
+             var myModule = oApplication.modules.myMeetEventModule;
              var oMyMeetEventController = new MyMeetEventController(oApplication);
 
              function showMeetEvent(itemId, dsArray) {
@@ -56,6 +57,7 @@ define(["controllers/my-meetevent-controller", "controllers/utility-controller",
                  //return detailHtml;
 
              }
+
              this.getMySpeedMeets = function () {
                  var oDAMeetEventList = new DAMeetEventList(oApplication),
                       tableName = "#tblMyMeetEvents",
@@ -65,15 +67,24 @@ define(["controllers/my-meetevent-controller", "controllers/utility-controller",
 
 
                  oMyMeetEventController.getMySpeedMeets().done(function (dsArray) {
+
+                     oApplication.showHideModule(myModule.id);  // show the mySpeedMeet Module
+
                      headers = dsArray.splice(dsArray.length - 2, 1);
                      dsArray.join();
                      eventDetails = dsArray.splice(dsArray.length - 1, 1);
                      dsArray.join();
 
                      oBaseDataTable = new BaseDataTable(tableName, dsArray, headers[0]);
+
                      columnsDef =       // Set the buttons column width & hide the ID column (first column)
-                         [{ "sWidth": "20%", "aTargets": [5] },     // Set the width of the Edit/Cancel buttons column
-                          { "sWidth": "5%", "aTargets": [0] },
+                         [{ "width": "5%", "targets": [0] },
+                          { "sWidth": "25%", "targets": [1] },     
+                          { "sWidth": "5%", "targets": [2] },
+                          { "sWidth": "30%", "targets": [3] },
+                          { "sWidth": "15%", "targets": [4] },
+                          { "width": "20%", "targets": [5] },   // Set the width of the Edit/Cancel buttons column
+                          
                           /*{     // Hide the ID column
                               "targets": [1], "visible": false, "searchable": false
                           },*/
@@ -169,10 +180,12 @@ define(["controllers/my-meetevent-controller", "controllers/utility-controller",
                          }
                          else {
                              tr.addClass('details');
-                             showEventDetails(row.data(), eventDetails[0], row);                             
+                             showEventDetails(row.data(), eventDetails[0], row);
 
                          }
                      });
+
+                    
                  });
              }
          }

@@ -61,6 +61,10 @@ define(["starters/utility", "starters/constants", "plugin-modules/progressbar", 
                          id: ["#IFinalSuccess", "#IFinalCancel"]
                      }
                  },
+                 progressModule: {
+                     id: "#IProgress",
+                     hide: true
+                 },
                  progressbar: {
                      id: "#IProgressbar",
                      hide: true

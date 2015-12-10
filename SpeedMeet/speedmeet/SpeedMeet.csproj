@@ -93,6 +93,7 @@
     <Content Include="Images\glyphicons-halflings.png" />
     <Content Include="Images\logo-contentteam.png" />
     <Content Include="Images\Person.png" />
+    <Content Include="Images\Progress.gif" />
     <Content Include="Images\speedmeet_logo-text.png" />
     <Content Include="Images\speedmeet_logo.png" />
     <Content Include="Images\speedmeet_logo_ Icon.png">

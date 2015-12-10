@@ -15,5 +15,6 @@
     <File Path="Images\valid.png" Url="Images/valid.png" ReplaceContent="TRUE" />
     <File Path="Images\logo-contentteam.png" Url="Images/logo-contentteam.png" ReplaceContent="TRUE" />
     <File Path="Images\speedmeet_logo_ Icon.png" Url="Images/speedmeet_logo_ Icon.png" ReplaceContent="TRUE" />
+    <File Path="Images\Progress.gif" Url="Images/Progress.gif" ReplaceContent="TRUE" />
   </Module>
 </Elements>

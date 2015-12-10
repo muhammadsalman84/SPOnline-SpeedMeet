@@ -3,6 +3,7 @@ define(["controllers/join-meetevent-controller", "plugin-modules/base-datatable"
      function (JoinMeetEventController, BaseDataTable) {
          function JoinMeetEventView(oApplication) {
              var oJoinMeetEventController = new JoinMeetEventController(oApplication),
+                 joinModule = oApplication.modules.joinMeetEventModule,
                  dtTable, arrayColumns;
 
              function showMeetEvent(itemId) {
@@ -15,6 +16,9 @@ define(["controllers/join-meetevent-controller", "plugin-modules/base-datatable"
                  var oBaseDataTable, columnsDef, columnsOrder, data, eventHtml, allAnchors;
 
                  oJoinMeetEventController.getMeetInvitations().done(function (arrayDataSet) {
+
+                     oApplication.showHideModule(joinModule.id);    // show the Join Module
+
                      arrayColumns = arrayDataSet.splice(arrayDataSet.length - 1, 1);
                      arrayDataSet.join();
 

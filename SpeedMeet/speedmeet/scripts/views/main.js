@@ -5,6 +5,7 @@ define(["views/meetevent-view", "views/my-meetevent-view", "views/join-meetevent
                     FinalSpeedMeetView, AnnouncementsView, utilityController) {
          function MainView(oApplication) {
              var headerButtons = oApplication.modules.menubar.getButtons(),
+                 progressModule = oApplication.modules.progressModule,
                  olLocation, itemId, userId;
 
              // Get Query String
@@ -86,14 +87,16 @@ define(["views/meetevent-view", "views/my-meetevent-view", "views/join-meetevent
              });
 
              $(headerButtons.btnMyMeetEvents).bind("click", function () {
-                 var module = oApplication.modules.myMeetEventModule;
-                 oApplication.showHideModule(module.id);
+                 //var module = oApplication.modules.myMeetEventModule;
+                 //var progressModule
+                 oApplication.showHideModule(progressModule.id);
                  oApplication.oMyMeetEventView.getMySpeedMeets();
+                 //oApplication.showHideModule(module.id);
              });
 
              $(headerButtons.btnJoinMeetEvent).bind("click", function () {
-                 var module = oApplication.modules.joinMeetEventModule;
-                 oApplication.showHideModule(module.id);
+                
+                 oApplication.showHideModule(progressModule.id);                
                  oApplication.oJoinMeetEventView.getMeetInvitations();
              });
 
