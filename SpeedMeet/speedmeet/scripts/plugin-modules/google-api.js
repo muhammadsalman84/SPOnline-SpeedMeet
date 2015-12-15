@@ -1,7 +1,7 @@
 ﻿'use strict';
-//define(['async!https://maps.googleapis.com/maps/api/js?v=3.exp', 'https://google.com/jsapi'], function () {
-//define(['jsapi'], function () {
-define(['async!https://maps.googleapis.com/maps/api/js?v=3.exp'], function () {
+define(['async!https://maps.googleapis.com/maps/api/js?v=3.exp', 'https://google.com/jsapi'], function () {
+    //define(['jsapi'], function () {
+    //define(['async!https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true'], function () {
 
     function GoogleApi(mapId, geoLocation, isStreetView) {
         var self = this,
@@ -61,24 +61,41 @@ define(['async!https://maps.googleapis.com/maps/api/js?v=3.exp'], function () {
 
         self.getMyLocation = function () {
             self.geoLocation = {};
-            //geocoder = new google.maps.Geocoder();
+            var oDeferred = $.Deferred();
+
             // if(navigator.geolocation){
-            /*if (google.loader.ClientLocation) {
+            //var geocoder = new google.maps.Geocoder();
+            if (google.loader.ClientLocation) {
                 var clientLocation = google.loader.ClientLocation;
                 self.geoLocation.latitude = clientLocation.latitude;
                 self.geoLocation.longitude = clientLocation.longitude;
                 self.geoLocation.locationName = clientLocation.address.city + ", " + clientLocation.address.region + ", " + clientLocation.address.country;
+                oDeferred.resolve();
             }
-            else {*/
-            self.geoLocation.latitude = 50.948800;
-            self.geoLocation.longitude = 6.944380;
-            self.geoLocation.locationName = "Im Mediapark 6 50670 Cologne";
-            //}
+            else {
+                self.geoLocation.latitude = 50.948800;
+                self.geoLocation.longitude = 6.944380;
+                self.geoLocation.locationName = "Im Mediapark 6 50670 Cologne";
+                oDeferred.resolve();
+            }
+            /*if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    self.geoLocation.latitude = position.coords.latitude;
+                    self.geoLocation.longitude = position.coords.longitude;
+                    self.geoLocation.locationName = "Im Mediapark 6 50670 Cologne";
+
+                    oDeferred.resolve();
+                });
+            }*/
+
+            return oDeferred.promise();
         }
 
         self.initialize = function () {
+
             if (!self.geoLocation.latitude)
-                self.getMyLocation();
+                self.getMyLocation()
+            // self.getMyLocation().done(function () {
             var initialLocation = new google.maps.LatLng(self.geoLocation.latitude, self.geoLocation.longitude),
                  mapOptions = {
                      zoom: 14,
@@ -96,6 +113,7 @@ define(['async!https://maps.googleapis.com/maps/api/js?v=3.exp'], function () {
                 }));
 
             }
+            // });
         }
     }
 

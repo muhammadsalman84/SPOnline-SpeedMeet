@@ -1,10 +1,24 @@
 ﻿'use strict';
+
 define(["data/data-meetevent-list", "controllers/utility-controller", "controllers/final-meetevent-controller", "plugin-modules/google-api"],
      function (DAMeetEventList, UtilityController, FinalController, GoogleApi) {
          function FinalizeMeetEventView(oApplication) {
              var self = this;
              var oDAMeetEventList = new DAMeetEventList(oApplication),
                  oGoogleApi, geoLocation;
+
+             function itemVisited(isVisiting, oListItem) {
+
+                 var oUtilityController = new UtilityController(oApplication);
+
+                 if (isVisiting) {
+                     // Update the participant info (User visited this item).
+                     oUtilityController.updateParticipantInfo(1, oListItem)
+                        .done(function () {
+                            oApplication.oAnnouncementView.getMyAnnouncments();
+                        });
+                 }
+             }
 
              function setFinalView(oListItem) {
                  var finalEventData = JSON.parse(oListItem.FinalEventDate);
@@ -24,7 +38,7 @@ define(["data/data-meetevent-list", "controllers/utility-controller", "controlle
                  }
              }
 
-             this.bindFinalView = function (itemId, doEmail) {
+             this.bindFinalView = function (itemId, doEmail, IsVisiting) {
                  var oUtilityController = new UtilityController(oApplication),
                      oFinalController = new FinalController(oApplication),
                      emailObjects, itemStatus,
@@ -35,6 +49,11 @@ define(["data/data-meetevent-list", "controllers/utility-controller", "controlle
                  oDAMeetEventList.getListItemByItemId(itemId)
                         .done(function (oListItem) {
                             if (oListItem) {
+
+                                oUtilityController.showAdminView(oListItem.AuthorId);
+
+                                itemVisited(IsVisiting, oListItem);
+
                                 geoLocation = JSON.parse(oListItem.GeoLocation);
                                 oApplication.ActiveListItem = oListItem;        // Set the Active list item
 

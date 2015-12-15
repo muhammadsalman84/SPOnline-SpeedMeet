@@ -30,7 +30,7 @@
     <!--<script src="../Scripts/libs/bootstrap.min.js"></script>-->
     <script data-main="../Scripts/App" src="../Scripts/require.js"></script>
     <!--<script src="../Scripts/libs/validator.js"></script>-->
-    <script src="../Scripts/BloggerCode.js"></script>
+    <!--<script src="../Scripts/BloggerCode.js"></script>-->
 </asp:Content>
 
 <%-- The markup in the following Content element will be placed in the TitleArea of the page --%>

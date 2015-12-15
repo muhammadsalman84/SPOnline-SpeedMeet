@@ -1,4 +1,5 @@
 ﻿'use strict';
+
 define(["data/da-utility", "data/da-layer"],
     function (DAUtility, DALayer) {
         function AnnouncementController(oApplication) {
@@ -26,7 +27,7 @@ define(["data/da-utility", "data/da-layer"],
                             oAnnouncement = JSON.parse(meetItem["ParticipantsInfo"]);
                             announcementValue = oAnnouncement[oApplication.CurrentUserId]["announcement"];
                             if (announcementValue == 0) {
-                                var itemHtml = "<li><a href='#' id='announcement-'" + meetItem.ID + "' data-eventId='" + meetItem.ID + "'>";
+                                var itemHtml = "<li><a href='#' id='announcement-'" + meetItem.ID + "' data-itemId='" + meetItem.ID + "' data-itemStatus='" + meetItem.Status + "'>";
                                 itemHtml += meetItem.Title;
                                 itemHtml += "</a></li><li class='divider'></li>";
 

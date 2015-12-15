@@ -93,7 +93,7 @@ define(["data/da-utility", "data/da-layer", "data/data-meetevent-list"],
                             }
                         })
                         .fail(function (failUser) {
-                            faileUser;
+                            failUser;
                         });
                     });
                 });

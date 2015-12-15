@@ -27,8 +27,9 @@ define(["data/da-utility", "data/da-layer"],
                             row.push(meetItem.ID);
                             row.push(meetItem.Title);
                             row.push(meetItem.Created);
-                            row.push(meetItem.Description1);
-                            row.push(meetItem.Location1);                            
+                            //row.push(meetItem.Description1);
+                            row.push(meetItem.Location1);
+                            row.push(meetItem.Status.toString().replace(/"/g, ''));
 
                             aData.push(row);
                         });
@@ -36,8 +37,9 @@ define(["data/da-utility", "data/da-layer"],
                         arrayHdrs.push({ "title": "ID" });
                         arrayHdrs.push({ "title": oSpeedMeetList.fields.Title.title });
                         arrayHdrs.push({ "title": "Created" });
-                        arrayHdrs.push({ "title": oSpeedMeetList.fields.Description1.title });
-                        arrayHdrs.push({ "title": oSpeedMeetList.fields.Location1.title });        
+                        //arrayHdrs.push({ "title": oSpeedMeetList.fields.Description1.title });
+                        arrayHdrs.push({ "title": oSpeedMeetList.fields.Location1.title });
+                        arrayHdrs.push({ "title": oSpeedMeetList.fields.Status.title });
                         aData.push(arrayHdrs);
 
                         oDeferred.resolve(aData);

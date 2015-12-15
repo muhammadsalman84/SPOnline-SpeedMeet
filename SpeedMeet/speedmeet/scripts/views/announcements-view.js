@@ -1,4 +1,5 @@
 ﻿'use strict';
+
 define(["controllers/announcement-controller"],
      function (AnnouncementsController) {
          function AnnouncementView(oApplication) {
@@ -23,8 +24,22 @@ define(["controllers/announcement-controller"],
                  // Bind the click event with the Events Anchors
                  $.each(allAnchors, function (index, eventAnchor) {
                      $(eventAnchor).bind('click', function () {
-                         var eventId = $(this).attr("data-eventId");
-                         oApplication.oShowMeetEventView.loadMeetEvent(eventId, _spPageContextInfo.userId, true);
+
+                         var itemId = $(this).attr("data-itemId");
+                         var status = $(this).attr("data-itemStatus");
+                         var itemStatus = oApplication.getConstants().DB.ListFields.Status;
+
+                         switch (status) {
+                             case itemStatus.Finalized:
+                                 oApplication.oFinalSpeedMeetView.bindFinalView(itemId, false, true);
+                                 break;
+                             case itemStatus.Cancelled:
+                                 oApplication.oFinalSpeedMeetView.bindFinalView(itemId, false, true);
+                                 break;
+                             default:
+                                 oApplication.oShowMeetEventView.loadMeetEvent(itemId, _spPageContextInfo.userId, true);
+                         }
+
                      });
                  });
              }

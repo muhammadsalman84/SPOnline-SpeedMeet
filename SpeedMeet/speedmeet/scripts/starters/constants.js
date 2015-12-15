@@ -30,7 +30,7 @@ define(function () {
                     divFeedBackYES: "<div class='alert alert-success text-center' width='100%' height='100%' data-feedback='1' data-startdate='{0}' data-enddate='{1}'><strong><i class='glyphicon glyphicon-ok'></i></strong></div>",
                     footerRow: "<tfoot><tr id='tfooterrow' class='cellfooter'><td>Participants Total:</td></tr></tfoot>",
                     //footerCell: "<b><span class='text-center'>{0}</span><br><br><button id='{1}' type='button' class='btn btn-primary text-center'>Finalize date</button></b>"
-                    footerCell: "<div style='text-align:center'><b><span>{0}</span><br><br><div class='adminFunctions hide'><button id='{1}' type='button' class='btn btn-primary'>Finalize date</button></div></b></div>"
+                    footerCell: "<div style='text-align:center'><b><span>{0}</span><br><br><div class='adminFunctions hide'><button id='{1}' type='button' class='btn btn-primary'>Finalize this slot</button></div></b></div>"
                 },
                 URL: {
                     userImagePath: "../Images/Person.png"
@@ -95,9 +95,11 @@ define(function () {
                             sHtml += '<td>{3}</td>';
                             sHtml += '</tr>';
                             sHtml += '</table><b></p><div>';
-                            sHtml += '<a href="{4}">	<table style="color:white;background-color:#0072C6;width: 15%" align="left">';
+                            sHtml += '<a href="{4}">';
+                            sHtml += 'Join this SpeedMeet event</a>';
+                            /*sHtml += '<a href="{4}">	<table style="color:white;background-color:#0072C6;width: 15%" align="left">';
                             sHtml += '<tr><td class="auto-style8">Join this SpeedMeet</td></tr>';
-                            sHtml += '</table></a>';
+                            sHtml += '</table></a>';*/
                             sHtml += '<br></div></body></html>';
 
                             return sHtml;
