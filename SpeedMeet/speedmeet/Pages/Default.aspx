@@ -45,10 +45,11 @@
     <SharePoint:ScriptLink Name="clientpeoplepicker.js" runat="server" LoadAfterUI="true" Localizable="false" />
     <SharePoint:ScriptLink Name="autofill.js" runat="server" LoadAfterUI="true" Localizable="false" />
     <SharePoint:ScriptLink Name="sp.core.js" runat="server" LoadAfterUI="true" Localizable="false" />
+    <!--<img id="img-company-logo" src="../Images/logo-contentteam.png" alt="Contentteam logo" />-->
     <div id="IModules">
         <div id="IHeader" class="row">
-            <div class="col-md-2">
-                <img id="img-company-logo" src="../Images/logo-contentteam.png" alt="TUV logo" />
+            <div class="col-md-2">                                
+                <img id="img-company-logo" src="../Images/img_TUV_Logo.jpg" alt="TÜV Rheinland logo" />
             </div>
             <div class="col-md-8">
                 <img id="img-app-logo" class="img-responsive" src="../Images/speedmeet_logo-text.png" alt="SharePoint Speed Meet App logo" />

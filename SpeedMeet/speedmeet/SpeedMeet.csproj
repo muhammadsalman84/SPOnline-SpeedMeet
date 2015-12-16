@@ -91,6 +91,7 @@
     <Content Include="Images\error.png" />
     <Content Include="Images\glyphicons-halflings-white.png" />
     <Content Include="Images\glyphicons-halflings.png" />
+    <Content Include="Images\img_TUV_Logo.jpg" />
     <Content Include="Images\logo-contentteam.png" />
     <Content Include="Images\Person.png" />
     <Content Include="Images\Progress.gif" />
@@ -99,7 +100,6 @@
     <Content Include="Images\speedmeet_logo_ Icon.png">
       <OpcRelationship>manifest-icon</OpcRelationship>
     </Content>
-    <Content Include="Images\tuv_logo.jpg" />
     <Content Include="Images\valid.png" />
     <Content Include="Pages\SubPages\FinalMeetEvent.html" />
     <Content Include="Pages\SubPages\JoinMeetEvent.html" />

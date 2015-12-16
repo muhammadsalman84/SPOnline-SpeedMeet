@@ -125,15 +125,17 @@ define(["controllers/meetevent-controller", "controllers/utility-controller", "p
                          };
 
                          oApplication.stopProgressBarOnError(70, errorMessage, showModule);
-                         
+
                      });
                  }
              });
 
              $(buttons.btnUpdateEvent).bind('click', function () {
+
                  var location, itemId, usrEmailObjects, usrEmailObjects1,
                      oDAMeetEventList = new DAMeetEventList(oApplication),
                       oValidateControls = new ValidateControls(oApplication);
+
                  if (oValidateControls.validateCalendar()) {
                      itemId = oApplication.ActiveListItem.ID;
                      oApplication.startProgressbar();
@@ -147,14 +149,31 @@ define(["controllers/meetevent-controller", "controllers/utility-controller", "p
                                             oApplication.incrementProgressBar(30, "collecting updated event data..");
                                             oUtilityController.getUsersInfo(oListItem).done(function (usersObject) {        // get the Users Info to be used in DataTable.                                                                                                                                        
                                                 oApplication.incrementProgressBar(20, "Sending Email(s) to Participant(s)..");
-                                                usrEmailObjects = oMeetEventController.getEmailObjectsByUsers("JOINMEET", usersObject, oListItem, changesRecorder[0]);       // Create email objects for new users
 
-                                                if (changesRecorder[1] == true) {   // Second index tells whether location is updated or not.
-                                                    usrEmailObjects1 = oMeetEventController.getEmailObjectsByUsers("NEWLOCATION", usersObject, oListItem, changesRecorder[0]);       // Create emaail objects for all the old users
-                                                    usrEmailObjects = $.merge(usrEmailObjects, usrEmailObjects1);       // Merge the email objects
+
+                                                if (changesRecorder.length > 0) {
+                                                    var newLocation = changesRecorder[0];
+                                                    var newParticipants = changesRecorder[1];
+
+                                                    if (newParticipants)
+                                                        usrEmailObjects = oMeetEventController.getEmailObjectsByUsers("JOINMEET", usersObject, oListItem, newParticipants["userKeys"]);
+
+                                                    if (newLocation) {
+                                                        if (newLocation["locationChanged"] == true)    // Whether location is updated or not.
+                                                            usrEmailObjects1 = oMeetEventController.getEmailObjectsByUsers("NEWLOCATION", usersObject, oListItem, newLocation["userKeys"]);       // Create emaail objects for all the old users                                                            
+
+                                                    }
+
+                                                    // Create email objects for new users
+                                                    if (usrEmailObjects.length > 0)
+                                                        if (usrEmailObjects1 != null)
+                                                            if (usrEmailObjects1.length > 0)
+                                                                usrEmailObjects = $.merge(usrEmailObjects, usrEmailObjects1);       // Merge the email objects
+
+                                                    oUtilityController.sendEmails(usrEmailObjects)   // Send Emails to the new participants   
                                                 }
 
-                                                oUtilityController.sendEmails(usrEmailObjects)   // Send Emails to the new participants                                                                                           
+
                                                 delete oApplication.ActiveListItem;
                                                 oApplication.oShowMeetEventView.loadMeetEvent(oListItem.ID, usersObject).
                                                                                     done(function () {

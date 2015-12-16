@@ -28,7 +28,7 @@ define(["controllers/announcement-controller"],
                          var itemId = $(this).attr("data-itemId");
                          var status = $(this).attr("data-itemStatus");
                          var itemStatus = oApplication.getConstants().DB.ListFields.Status;
-
+                         status = status.replace(/"/g, '');
                          switch (status) {
                              case itemStatus.Finalized:
                                  oApplication.oFinalSpeedMeetView.bindFinalView(itemId, false, true);
