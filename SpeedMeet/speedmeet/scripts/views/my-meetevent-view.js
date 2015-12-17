@@ -6,6 +6,7 @@ define(["controllers/my-meetevent-controller", "controllers/utility-controller",
              var oMyMeetEventController = new MyMeetEventController(oApplication);
 
              function showMeetEvent(itemId, dsArray) {
+                 
                  var itemStatus = oApplication.getConstants().DB.ListFields.Status,
                      status;
 
@@ -24,7 +25,11 @@ define(["controllers/my-meetevent-controller", "controllers/utility-controller",
                          oApplication.oFinalSpeedMeetView.bindFinalView(itemId);
                          break;
                      default:
-                         oApplication.oShowMeetEventView.loadMeetEvent(itemId, _spPageContextInfo.userId, true);
+                         var waitDialog = SP.UI.ModalDialog.showWaitScreenWithNoClose('Loading SpeedMeet event...', 'Please wait, this will not take longer...');
+                         oApplication.oShowMeetEventView.loadMeetEvent(itemId, _spPageContextInfo.userId, true)
+                            .done(function () {
+                                waitDialog.close();
+                            });
                  }
 
              }
@@ -43,10 +48,12 @@ define(["controllers/my-meetevent-controller", "controllers/utility-controller",
                                 participantHtml += "&nbsp;&nbsp;&nbsp;" + usersDetailObject[user]["PicturePresence"];
                             }
 
+                            var description = eventDetails[eventId]["description"] || "";
+
                             detailHtml += '<tr>' + '<td><strong>Participants:</strong></td>' +
                                            '<td>' + participantHtml + '</td>' + '</tr>';
                             detailHtml += '<tr>' + '<td><strong>Description:</strong></td>' +
-                                          '<td>' + eventDetails[eventId]["description"] + '</td>' + '</tr>'
+                                          '<td>' + description + '</td>' + '</tr>'
 
                             detailHtml += '</table>';
 
@@ -79,12 +86,12 @@ define(["controllers/my-meetevent-controller", "controllers/utility-controller",
 
                      columnsDef =       // Set the buttons column width & hide the ID column (first column)
                          [{ "width": "5%", "targets": [0] },
-                          { "sWidth": "25%", "targets": [1] },     
+                          { "sWidth": "25%", "targets": [1] },
                           { "sWidth": "5%", "targets": [2] },
                           { "sWidth": "30%", "targets": [3] },
                           { "sWidth": "15%", "targets": [4] },
                           { "width": "20%", "targets": [5] },   // Set the width of the Edit/Cancel buttons column
-                          
+
                           /*{     // Hide the ID column
                               "targets": [1], "visible": false, "searchable": false
                           },*/
@@ -185,7 +192,7 @@ define(["controllers/my-meetevent-controller", "controllers/utility-controller",
                          }
                      });
 
-                    
+
                  });
              }
          }

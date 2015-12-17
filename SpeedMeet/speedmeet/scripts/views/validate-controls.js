@@ -16,13 +16,22 @@ define([],
                  return errorHtml;
              }
 
-             self.showError = function (element, errorHtml) {
+             self.showError = function (element, errorHtml, insertBefore) {
                  var errorHtml = getErrorHtml(element, errorHtml);
                  $(element).closest('.form-group').addClass('has-error');
-                 if ($(element).parent('.input-group').length) {
-                     $(errorHtml).insertAfter($(element).parent());
-                 } else {
-                     $(errorHtml).insertAfter($(element));
+                 if (insertBefore) {
+                     if ($(element).parent('.input-group').length) {
+                         $(errorHtml).insertBefore($(element).parent());
+                     } else {
+                         $(errorHtml).insertBefore($(element));
+                     }
+                 }
+                 else {
+                     if ($(element).parent('.input-group').length) {
+                         $(errorHtml).insertAfter($(element).parent());
+                     } else {
+                         $(errorHtml).insertAfter($(element));
+                     }
                  }
              }
 
@@ -130,9 +139,9 @@ define([],
              var self = this,
                  errorElementHtml = "<strong><span class='help-block' id='{0}'>Please select atleast one time slot in order to proceed further.</span></strong></strong>",
                  calendarDates = self.oApplication.getAllSelectedDates();
-                
+
              if (calendarDates.length == 0) {
-                 self.showError($("#calendar"), errorElementHtml);
+                 self.showError($("#calendar"), errorElementHtml, true);
                  return false;
              }
              else {

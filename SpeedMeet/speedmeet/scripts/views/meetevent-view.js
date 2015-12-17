@@ -218,6 +218,7 @@ define(["controllers/meetevent-controller", "controllers/utility-controller", "p
 
              this.showEvent = function (itemId) {
                  var oUtilityController = new UtilityController(oApplication),
+                      oDeferred = $.Deferred(),
                      constants = oApplication.getConstants();
 
                  oUtilityController.getItemStatus(itemId)
@@ -226,17 +227,24 @@ define(["controllers/meetevent-controller", "controllers/utility-controller", "p
                                                         switch (itemStatus) {
                                                             case constants.DB.ListFields.Status.Finalized:
                                                                 oApplication.oFinalSpeedMeetView.bindFinalView(itemId);
+                                                                oDeferred.resolve();
                                                                 break;
                                                             case constants.DB.ListFields.Status.Cancelled:
                                                                 oApplication.oFinalSpeedMeetView.bindFinalView(itemId);
+                                                                oDeferred.resolve();
                                                                 break;
                                                             default:
-                                                                oApplication.oShowMeetEventView.loadMeetEvent(itemId, _spPageContextInfo.userId);
+                                                                oApplication.oShowMeetEventView.loadMeetEvent(itemId, _spPageContextInfo.userId)
+                                                                    .done(function () {
+                                                                        oDeferred.resolve();
+                                                                    });
                                                         }
                                                     })
                                                     .fail(function (error) {
                                                         alert(error);
                                                     });
+
+                 return oDeferred.promise();
              }
 
              /*

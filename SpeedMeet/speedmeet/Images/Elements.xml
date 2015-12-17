@@ -17,5 +17,6 @@
     <File Path="Images\speedmeet_logo_ Icon.png" Url="Images/speedmeet_logo_ Icon.png" ReplaceContent="TRUE" />
     <File Path="Images\Progress.gif" Url="Images/Progress.gif" ReplaceContent="TRUE" />
     <File Path="Images\img_TUV_Logo.jpg" Url="Images/img_TUV_Logo.jpg" ReplaceContent="TRUE" />
+    <File Path="Images\speedmeet_logo-text-small.png" Url="Images/speedmeet_logo-text-small.png" ReplaceContent="TRUE" />
   </Module>
 </Elements>

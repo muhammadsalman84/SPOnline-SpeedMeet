@@ -52,7 +52,7 @@
                 <img id="img-company-logo" src="../Images/img_TUV_Logo.jpg" alt="TÜV Rheinland logo" />
             </div>
             <div class="col-md-8">
-                <img id="img-app-logo" class="img-responsive" src="../Images/speedmeet_logo-text.png" alt="SharePoint Speed Meet App logo" />
+                <img id="img-app-logo" class="img-responsive" src="../Images/speedmeet_logo-text-small.png" alt="SharePoint Speed Meet App logo" />
             </div>
             <div class="col-md-2">
                 <div id="IHeaderButtons">

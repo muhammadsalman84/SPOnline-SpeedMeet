@@ -18,5 +18,6 @@
     <ProjectItemFile Source="speedmeet_logo_ Icon.png" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="Progress.gif" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="img_TUV_Logo.jpg" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="speedmeet_logo-text-small.png" Target="Images\" Type="ElementFile" />
   </Files>
 </ProjectItem>

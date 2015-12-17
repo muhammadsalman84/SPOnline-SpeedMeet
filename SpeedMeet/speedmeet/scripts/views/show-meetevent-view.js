@@ -20,7 +20,8 @@ define(["data/data-meetevent-list", "controllers/utility-controller", "plugin-mo
                  var users = [],
                      presenceSettings = { type: "default", redirectToProfile: true },
                      oUtilityController = new UtilityController(oApplication, presenceSettings),
-                     showMeetEventModuleId = oApplication.modules.showMeetEventModule.id;
+                     showMeetEventModuleId = oApplication.modules.showMeetEventModule.id,
+                     description = oListItem.Description1 || "";
 
                  oApplication.showHideModule(showMeetEventModuleId);
                  oUtilityController.showAdminView(oListItem.AuthorId);      // Hide or Show the admin functionalities
@@ -35,7 +36,7 @@ define(["data/data-meetevent-list", "controllers/utility-controller", "plugin-mo
                          $("#txt-organizer-pool").text(oListItem.Author.Title);
                      });
                  $("#txt-title-pool").text("SpeedMeet Event: " + oListItem.Title);
-                 $("#txt-description-pool").text(oListItem.Description1);
+                 $("#txt-description-pool").text(description);
                  $("#txt-location-pool").text(oListItem.Location1);
 
                  var geoLocation = JSON.parse(oListItem.GeoLocation);
@@ -70,6 +71,7 @@ define(["data/data-meetevent-list", "controllers/utility-controller", "plugin-mo
 
                              }
                          });
+                         
                      });
                  return oDeferred.promise();
              }

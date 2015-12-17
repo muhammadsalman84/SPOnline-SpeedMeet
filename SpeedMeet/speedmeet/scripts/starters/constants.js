@@ -76,7 +76,7 @@ define(function () {
                             sHtml += '}</style></head>';
                             sHtml += '<body>';
                             sHtml += '<p> <strong>Dear {0}</strong>, </p>';
-                            sHtml += '<p> <br> You have been invited to the SpeedMeet event. The following are the details of the SpeedMeet event; <br><br></p>';
+                            sHtml += '<p> <br> You have been invited to the SpeedMeet event. The following are the details of the SpeedMeet event. <br><br></p>';
                             sHtml += '<p> ';
                             sHtml += '<table style="width: 100%" border="0">';
                             sHtml += '<tr>';
@@ -121,7 +121,7 @@ define(function () {
                             sHtml += '}</style></head>';
                             sHtml += '<body>';
                             sHtml += '<p> <strong>Dear {0}</strong>, </p>';
-                            sHtml += '<p> <br> The date has been finalized for the event <strong>"{1}"</strong></strong>. The following are the details;<br></p>';
+                            sHtml += '<p> <br> The date has been finalized for the event <strong>"{1}"</strong></strong>. The following are the details.<br></p>';
                             sHtml += '<table style="width: 100%">';
                             sHtml += '<tr><td style="color:white;background-color:#0072C6; font-size:x-large" colspan="2">SpeedMeet Event: {2}</td></tr>';
                             sHtml += '<tr><td style="width: 152px">Description:</td><td>{3}</td></tr>';

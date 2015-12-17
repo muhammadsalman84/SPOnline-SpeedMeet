@@ -7,8 +7,12 @@ define(["controllers/join-meetevent-controller", "plugin-modules/base-datatable"
                  dtTable, arrayColumns;
 
              function showMeetEvent(itemId) {
+                 var waitDialog = SP.UI.ModalDialog.showWaitScreenWithNoClose('Loading SpeedMeet event...', 'Please wait, this will not take longer...');
+                 oApplication.oMeetEventView.showEvent(itemId)
+                     .done(function () {
+                         waitDialog.close();
+                     });
 
-                 oApplication.oMeetEventView.showEvent(itemId);
                  //oApplication.oShowMeetEventView.loadMeetEvent(itemId, _spPageContextInfo.userId, true);
              }
 

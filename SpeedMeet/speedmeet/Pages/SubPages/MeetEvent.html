@@ -46,13 +46,6 @@
                 </div>
                 <div class="col-md-12 top-buffer">
                 </div>
-                <div class="col-md-9">
-                </div>
-                <div class="col-md-2 form-group">
-                    <button type="button" id="btnNextToCalendar" class="btn btn-primary" data-bsbutton="true" data-toggle="tooltip" title="Go to the next section">Next</button>
-                </div>
-                <div class="col-md-1">
-                </div>
                 <div class="col-md-12 hide">
                     <label for="fileupload">Share file(s) with the participant(s)</label><br />
                     <span class="btn btn-primary fileinput-button">
@@ -66,41 +59,48 @@
             </div>
         </div>
         <div class="col-md-7">
-            <div style="width: 100%; height: 600px;">
+            <div class="align-right-button">
+                <button type="button" id="btnNextToCalendar" class="btn btn-primary" data-bsbutton="true" data-toggle="tooltip" title="Go to the next section">Next</button>
+                <hr>
+            </div>
+            <div style="width: 100%; height: 500px;">
                 <div id="map-canvas" data-spfield="GeoLocation"></div>
             </div>
         </div>
     </div>
     <div id="IMeetEventTWO" class="row hide">
-        <div class="col-md-12" form-group>
+        <div class="col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4>Choose the days along with the time slots for the event.</h4>
                 </div>
             </div>
+        </div>
+        <div class="col-md-6 align-right-button">
+            <a id="btnBackToMap" class="btn btn-warning" data-bsbutton="true" data-toggle="tooltip" title="Go back" style="width:100px">
+                Back
+            </a>
+            <a id="btnCreateEvent" class="btn btn-primary" data-bsbutton="true" data-toggle="tooltip" style="width:225px" title="Creates an SpeedMeet event and invites participants to the event.">
+                <i class="glyphicon glyphicon-list-alt pull-left"></i>
+                Create SpeedMeet event
+            </a>
+            <a id="btnUpdateEvent" class="btn btn-primary hide" data-bsbutton="true" data-toggle="tooltip" style="width:225px" title="Updates the SpeedMeet and notify participants by sending them email.">
+                <i class="glyphicon glyphicon-list-alt pull-left"></i>
+                Update SpeedMeet event
+            </a>
+            <hr />
+        </div>
+        <div class="col-md-12 top-buffer">
+        </div>
+        <div class="col-md-12">
             <div class="form-group">
-                <div id='calendar' data-spfield="CalendarDates">
+                <div id='calendar' data-spfield="CalendarDates" style="height:500px">
                 </div>
             </div>
-            <br />
         </div>
+        <br />
         <div class="col-md-12"></div>
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <div >
-                <a id="btnBackToMap" class="btn btn-warning" data-bsbutton="true" data-toggle="tooltip" title="Go back" style="width:100px">
-                    Back
-                </a>
-                <a id="btnCreateEvent" class="btn btn-primary" data-bsbutton="true" data-toggle="tooltip" title="Creates an SpeedMeet event and invites participants to the event.">
-                    <i class="glyphicon glyphicon-list-alt pull-left"></i>
-                    Create SpeedMeet event
-                </a>
-                <a id="btnUpdateEvent" class="btn btn-primary hide" data-bsbutton="true" data-toggle="tooltip" title="Updates the SpeedMeet and notify participants by sending them email.">
-                    <i class="glyphicon glyphicon-list-alt pull-left"></i>
-                    Update SpeedMeet event
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4"></div>
     </div>
+    
+
 </div>

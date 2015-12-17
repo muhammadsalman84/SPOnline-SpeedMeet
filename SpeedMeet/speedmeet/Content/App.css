@@ -41,6 +41,7 @@
 
 .top-buffer { margin-top:20px; }
 
+.align-right-button {text-align:right;}
 
 #map-canvas, #map-canvas-showevent, #map-canvas-finalevent {    
     height: 100%;
@@ -142,19 +143,16 @@ tr.details td.details-control {
     color:white
 }
 
-.status-InProgress {
-    color:white;
-    background-color:#34CA10;
+.status-InProgress {    
+    color:#34CA10;
 }
 
-.status-Finalized {
-    color:white;
-    background-color:#39B3D7;
+.status-Finalized {    
+    color:#39B3D7;
 }
 
 .status-Cancelled {
-    color:white;
-    background-color:#EB9316;
+    color:#EB9316;    
 }
 
 label.valid {
