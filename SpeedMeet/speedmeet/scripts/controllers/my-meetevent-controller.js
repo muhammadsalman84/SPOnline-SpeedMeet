@@ -16,7 +16,7 @@ define(["data/da-utility", "data/da-layer"],
                 aData = [],                
                 oDeferred = $.Deferred();
 
-                oHttpRequest.url += "lists/getbytitle('" + oSpeedMeetList.Title + "')/items?$select=ID,Title,Location1,Description1,Participants1Id,Author/ID,Author/Title,Created,Status&$expand=Author/ID,Author/Title&$filter=Author/ID eq " + "'" + _spPageContextInfo.userId + "' &$orderby=Created desc";
+                oHttpRequest.url += "lists/getbytitle('" + oSpeedMeetList.Title + "')/items?$select=ID,Title,Location1,Description1,FinalEventDate,Participants1Id,Author/ID,Author/Title,Created,Status&$expand=Author/ID,Author/Title&$filter=Author/ID eq " + "'" + _spPageContextInfo.userId + "' &$orderby=Created desc";
                 oDALayer.SubmitWebMethod(oHttpRequest).done(function (oListItems) {
                     if (oListItems.d.results) {
                         olMeetItems = oListItems.d.results;
@@ -36,6 +36,7 @@ define(["data/da-utility", "data/da-layer"],
                             eventDetails[eventId] = {};
                             eventDetails[eventId]["description"] = eventItem.Description1;
                             eventDetails[eventId]["participants"] = eventItem.Participants1Id.results;
+                            eventDetails[eventId]["finalEventDate"] = eventItem.FinalEventDate;
                         });
 
                         // Add header columns in the array

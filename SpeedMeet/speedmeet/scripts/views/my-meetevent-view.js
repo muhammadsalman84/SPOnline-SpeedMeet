@@ -49,11 +49,22 @@ define(["controllers/my-meetevent-controller", "controllers/utility-controller",
                             }
 
                             var description = eventDetails[eventId]["description"] || "";
+                            var finalEventDate = eventDetails[eventId]["finalEventDate"] || "";
 
                             detailHtml += '<tr>' + '<td><strong>Participants:</strong></td>' +
                                            '<td>' + participantHtml + '</td>' + '</tr>';
                             detailHtml += '<tr>' + '<td><strong>Description:</strong></td>' +
-                                          '<td>' + description + '</td>' + '</tr>'
+                                          '<td>' + description + '</td>' + '</tr>';
+
+                            if (finalEventDate) {
+
+                                var finalEventData = JSON.parse(finalEventDate);
+                                var finalDate = finalEventData.FinalDate;
+                                var finalTime = finalEventData.FinalStartTime + " - " + finalEventData.FinalEndTime;
+
+                                detailHtml += '<tr>' + '<td><strong>Finalized Event Date:</strong></td>' +
+                                         '<td>' + finalDate + " " + finalTime + '</td>' + '</tr>'
+                            }
 
                             detailHtml += '</table>';
 
