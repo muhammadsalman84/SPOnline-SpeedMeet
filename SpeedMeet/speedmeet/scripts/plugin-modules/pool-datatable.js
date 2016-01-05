@@ -94,7 +94,7 @@ define(["datatables", "plugin-modules/base-datatable", "data/data-meetevent-list
                 $(data).each(function (i) {
                     if (i > 0) {
                         $('td', row).eq(i).bind('click', function () {   // Loop each cells of the row and bind click event dynamically
-                            
+
                             td = $('td', row).eq(i).html();
                             dateStart = $(td).attr('data-startdate');
                             dateEnd = $(td).attr('data-enddate');
@@ -140,8 +140,10 @@ define(["datatables", "plugin-modules/base-datatable", "data/data-meetevent-list
                         olFeedBack = JSON.parse(oListItem.Feedback),
                         sName = user.DisplayName,
                         sPicUrl = user.PictureUrl || self.CONSTANTS.URL.userImagePath;
+                    
+                    if (!user.PicturePresence)  // If the Picture is null
+                        user.PicturePresence = "No Picture found";//_spPageContextInfo.webAbsoluteUrl + "/_layouts/15/userphoto.aspx";
 
-                    //aRow.push("<div id='User" + id + "' ><img class='personimage-resize' src='" + sPicUrl + "' /><span>" + sName + "</span></div>");
                     aRow.push("<div id='User" + id + "' >" + user.PicturePresence + "</div>");
                     $.each(olFeedBack, function (j, date) {
                         var cellHtml = "";

@@ -6,7 +6,7 @@
 }
 
 /* Hide the top default TUV logo*/
-#s4-titlerow {
+#s4-titlerow, #RibbonContainer, #s4-ribbonrow {
     display: none !important;
 }
 

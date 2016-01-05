@@ -22,6 +22,11 @@
     <link rel="Stylesheet" type="text/css" href="../Content/jquery.fileupload.css" />
 
     <!-- Add your JavaScript to the following file -->
+    <script src="../Scripts/libs/jquery-1.11.3.min.js"></script>
+    <script src="../Scripts/libs/moment.min.js"></script>
+    <script src="../Scripts/libs/fullcalendar.min.js"></script>
+    <script src="../Scripts/libs/jquery.dataTables.js"></script>
+
     <!--<script src="../Scripts/libs/bootstrap.min.js"></script>
     <script src="../Scripts/libs/jquery.dataTables.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
@@ -45,11 +50,11 @@
     <SharePoint:ScriptLink Name="clientpeoplepicker.js" runat="server" LoadAfterUI="true" Localizable="false" />
     <SharePoint:ScriptLink Name="autofill.js" runat="server" LoadAfterUI="true" Localizable="false" />
     <SharePoint:ScriptLink Name="sp.core.js" runat="server" LoadAfterUI="true" Localizable="false" />
-    <!--<img id="img-company-logo" src="../Images/logo-contentteam.png" alt="Contentteam logo" />-->
     <div id="IModules">
         <div id="IHeader" class="row">
-            <div class="col-md-2">                                
-                <img id="img-company-logo" src="../Images/img_TUV_Logo.jpg" alt="TÜV Rheinland logo" />
+            <div class="col-md-2">
+                <!--<img id="img-company-logo" src="../Images/img_TUV_Logo.jpg" alt="TÜV Rheinland logo" />-->
+                <img id="img-company-logo" src="../Images/logo-contentteam.png" alt="Contentteam logo" />
             </div>
             <div class="col-md-8">
                 <img id="img-app-logo" class="img-responsive" src="../Images/speedmeet_logo-text-small.png" alt="SharePoint Speed Meet App logo" />

@@ -1,10 +1,7 @@
 ﻿'use strict';
 
-require.config({
+/*require.config({
     baseUrl: '../Scripts',
-    shim: {
-        "bootstrap": { "deps": ['jquery'] }
-    },
     paths: {
         "jquery": "libs/jquery-1.11.3.min",
         "bootstrap": "libs/bootstrap.min",
@@ -14,11 +11,30 @@ require.config({
         "moment": "libs/moment.min",
         "fullCalendar": "libs/fullcalendar.min",
         "jquery.validate": "libs/jquery.validate"
+    },
+    shim: {
+        "bootstrap": { deps: ['jquery'], exports: 'Bootstrap' }
+    }    
+});*/
+
+require.config({
+    baseUrl: '../Scripts',
+    paths: {
+        "jquery": "libs/jquery-1.11.3.min",
+        "bootstrap": "libs/bootstrap.min",
+        "datatables": "libs/jquery.dataTables",
+        "async": "libs/async",
+        "jsapi": "//google.com/jsapi",
+        "moment": "libs/moment.min",
+        "fullCalendar": "libs/fullcalendar.min",
+        "jquery.validate": "libs/jquery.validate"
+    },
+    shim: {
+        "bootstrap": { deps: ['jquery'], exports: 'Bootstrap' }
     }
 });
 
-
-require(['jquery', 'starters/application', 'views/main', 'jquery.validate', 'bootstrap'],
+require(['jquery', 'starters/application', 'views/main', 'jquery.validate', 'bootstrap', 'fullCalendar'],
 function ($, Application, viewMain, validate) {
     var waitDialog = SP.UI.ModalDialog.showWaitScreenWithNoClose('Loading SpeedMeet...', 'Please wait, this will not take longer...');
     $(document).ready(function () {

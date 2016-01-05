@@ -86,7 +86,8 @@ define(["data/da-utility", "data/da-layer", "data/data-meetevent-list"],
                                         break;
                                     }
                                 }
-                            }
+                            }                            
+
                             iCounter++;
                             if (iTotalCount == iCounter) {
                                 oDeferred.resolve(olUsers);
@@ -257,10 +258,10 @@ define(["data/da-utility", "data/da-layer", "data/data-meetevent-list"],
                 getCurrentUser.done(function (oUser) {
                     loginName = oUser.get_loginName();
                     loginName = loginName.replace("i:0#.w|", "");
-                    var user = oDALayer.getUserByLoginName(loginName);
-                    user.done(function (userInfo) {
-                        oDeferred.resolve(userInfo.get_id());
-                    });
+                    //var user = oDALayer.getUserByLoginName(loginName);
+                    //user.done(function (userInfo) {
+                    oDeferred.resolve(oUser.get_id());
+                    //});
                 });
 
                 return oDeferred.promise();

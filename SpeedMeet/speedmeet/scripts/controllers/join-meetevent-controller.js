@@ -16,7 +16,7 @@ define(["data/da-utility", "data/da-layer"],
                 aData = [],
                 oDeferred = $.Deferred();
 
-                oHttpRequest.url += "lists/getbytitle('" + oSpeedMeetList.Title + "')/items?$filter=Participants1Id eq " + _spPageContextInfo.userId + " and Author/ID ne " + _spPageContextInfo.userId + " &$orderby=Created desc";
+                oHttpRequest.url += "lists/getbytitle('" + oSpeedMeetList.Title + "')/items?$filter=Participants1/Id eq " + _spPageContextInfo.userId + " and Author/ID ne " + _spPageContextInfo.userId + " &$orderby=Created desc";
                 oDALayer.SubmitWebMethod(oHttpRequest).done(function (oListItems) {
                     if (oListItems.d.results) {
                         olMeetItems = oListItems.d.results;
